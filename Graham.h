@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include<vector>
+#include <ctime>
 #include<stack>
 #include<cmath>
 using namespace std;
@@ -43,4 +44,3 @@ public:
 	heap();
 	
 };
-

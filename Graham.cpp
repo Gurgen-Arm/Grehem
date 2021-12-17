@@ -64,7 +64,8 @@ void Graham::Stack(vector<double>& ang, hull* point)
     cout << endl;
     while (!S.empty())
     {
-        cout << point[S.top()].x << " " << point[S.top()].y << endl;
+        
+        cout << point[S.top()].x << " " << point[S.top()].y<< endl;
         S.pop();
     }
 }
@@ -187,7 +188,7 @@ void merge::check(vector<double>& a, hull* b, double* mas_0, double* mas_1, doub
     }
 
 
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < 250; i++)
     {
         if (mas_1[0] < mas_0[(int)(n / 5) - 1])
         {
@@ -274,8 +275,8 @@ void merge::Merge_Sort(vector<double>& a, hull* b, const int n)
 
         check(a, b, mas_0, mas_1, mas_2, mas_3, mas_4, n);
         Merge(a, mas_0, mas_1, mas_2, mas_3, mas_4, n);
-        for (int i = 0; i < n; i++)
-            cout << a[i] << endl;
+        /*for (int i = 0; i < n; i++)
+            cout << a[i] << endl;*/
 
     }
     else
@@ -305,26 +306,30 @@ void merge::Merge_Sort(vector<double>& a, hull* b, const int n)
         check(a, b, mas_0, mas_1, mas_2, mas_3, mas_4, n);
         cout << endl;
         Merge(a, mas_0, mas_1, mas_2, mas_3, mas_4, n);
-        for (int i = 0; i < n; i++)
-            cout << a[i] << endl;
+        /*for (int i = 0; i < n; i++)
+            cout << a[i] << endl;*/
         
     }
 }
 
 merge::merge()
 {
-    const int N = 101;
+    const int N = 1000;
     
     hull* b = new hull[N];
     for (int i = 0; i < N; i++)
     {
-        b[i].x = rand() % 101;
-        b[i].y = rand() % 101;
+        b[i].x = rand() % 1000;
+        b[i].y = rand() % 1000;
     }
 
     Angle(a, b, N);
+    unsigned int start_time = clock();
     Merge_Sort(a, b, N);
-    
+   
+    unsigned int end_time = clock(); // конечное время
+    unsigned int search_time = end_time - start_time;
+    cout << "Merge Sort Time: " << search_time << endl;
     Stack(a, b);
     delete[] b;
 }
@@ -380,19 +385,26 @@ void heap::heapSort(vector<double>& arr, hull* b, int n)
 }
 heap::heap()
 {
-    const int N = 101;
+    const int N = 1000;
 
     hull* b = new hull[N];
     for (int i = 0; i < N; i++)
     {
-        b[i].x = rand() % 101;
-        b[i].y = rand() % 101;
+        b[i].x = rand() % 1000;
+        b[i].y = rand() % 1000;
     }
     
     Angle(a, b, N);
+    unsigned int start_time = clock();
     heapSort(a, b, N);
+    unsigned int end_time = clock(); // конечное время
+    unsigned int search_time = end_time - start_time;
+    cout <<"Heap Sort Time: "<< search_time << endl;
     Stack(a, b);
     delete[] b;
 }
+
+
+
 
 

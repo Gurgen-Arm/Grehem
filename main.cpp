@@ -7,8 +7,8 @@ using namespace std;
 int main()
 {
     setlocale(LC_ALL, "Russian");
+    //heap A;
     merge A;
-    
     cout << "runtime = " << clock() / 1000.0 << endl;
     system("pause");
     return 0;
